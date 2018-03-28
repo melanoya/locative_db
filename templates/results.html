@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheet.css') }}">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <title>Результаты поиска</title>
+</head>
+<body>
+<div id="header"><a id="header">{{ word }}</a></div>
+<div class="box" id="only">
+    {% for i in array %}
+        <div id="example">{{ i }}</div>
+    {% endfor %}
+</div>
+<div id="footer" style="margin-top: 5%"><a href="http://ling.hse.ru">НИУ ВШЭ, Школа Лингвистики, 2018</a>
+</div>
+</body>
+</html>

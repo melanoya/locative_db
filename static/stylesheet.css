@@ -1,0 +1,143 @@
+* {
+    font-size: 1em;
+}
+
+body {
+    background-color: #ececd4;
+    background-size: cover;
+}
+
+form {
+    margin: auto;
+    margin-top: 20%;
+    text-align: center;
+    width: 50%;
+}
+
+input {
+    border: none;
+    font-size: x-large;
+    border-radius: 3%;
+    color: #7b6f3d;
+}
+
+#header {
+    padding-top: 35px;
+    color: #7b6f3d;
+    font-family: "Garamond, serif";
+    font-size: 2em;
+    text-align: center;
+    font-variant: small-caps;
+}
+
+#header:hover {
+    border-bottom: none;
+    color: #a39954;
+}
+
+#footer {
+    display: block;
+    position: static;
+    bottom: 5%;
+    left: 25%;
+    right: 25%;
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 3%;
+    width: 50%;
+    text-align: center;
+    font-family: "Garamond, serif";
+    color: #493e24;
+    font-size: small;
+}
+
+.box {
+    float: right;
+    position: relative;
+    display: inline-block;
+    color: #2f2d13;
+    font-family: "Garamond, serif";
+    background-color: rgba(258,258,258,0.5);
+    border-color: #7b6f3d;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 50%;
+    margin-top: 5%;
+    margin-right: 20%;
+    margin-bottom: 3%;
+}
+
+#table {
+    width: 20%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+table {
+    border-spacing: 4px;
+    color: #7b6f3d;
+    margin: auto;
+}
+
+#only {
+    width: 65%;
+    margin: auto;
+    margin-top: 5%;
+    display: block;
+    float: none;
+}
+
+.sidebox {
+    color: #2f2d13;
+    display: inline-block;
+    font-family: "Garamond, serif";
+    background-color: rgba(258,258,258,0.5);
+    border-color: #7b6f3d;
+    padding-top: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 20px;
+    width: 20%;
+    margin-top: 5%;
+    margin-left: 1%;
+}
+
+#example {
+    border-top: rgba(163, 153, 84, 0.5) dashed 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#example:first-child {
+    border-top: 0px;
+}
+
+#quotation {
+    font-size: small;
+    font-style: italic;
+    text-align: right;
+}
+
+#value {
+    font-variant: small-caps;
+}
+
+td {
+    padding-right: 10px;
+}
+a:link {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:hover {
+    border-bottom: dashed 1px rgba(163, 153, 84, 0.4);
+    color: #a39954;
+    cursor: pointer;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #a39954;
+}
