@@ -43,13 +43,17 @@ def db_insert():
 
 
 def poisk(word):
-   conn = sqlite3.connect('dag_locatives.db')
-   c = conn.cursor()
-   constr = u''
-   c.execute('SELECT andi_ex FROM andi WHERE loc=?', (word,))
-   for i in c.fetchone():
-       constr += i
-   return constr
+	conn = sqlite3.connect('dag_locatives.db')
+	c = conn.cursor()
+	arr = []
+	c.execute('SELECT rus_ex, andi_ex, marker, loc, orient FROM andi WHERE loc=?', (word,))
+	for i in c.fetchall():
+		constr = ''
+		for j in i:
+			constr += j + ' : '
+		arr.append(constr)
+		# print(constr)
+	return arr
 
 # print(poisk('SUB'))
 
@@ -70,8 +74,8 @@ def poisk(word):
 def form():
 	if request.args:
 		construct = poisk(request.args['word'])
-		arr = request.args['word']
-		return render_template('results.html', array = construct, word = arr)
+		search_line = request.args['word']
+		return render_template('results.html', array = construct, word = search_line)
 	else:
 		return render_template('landing-page.html')
         
