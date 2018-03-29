@@ -42,11 +42,12 @@ def db_insert():
 # db_insert()
 
 
-def poisk(word):
+def poisk_loc(word, lang):
 	conn = sqlite3.connect('dag_locatives.db')
 	c = conn.cursor()
 	arr = []
-	c.execute('SELECT rus_ex, andi_ex, marker, loc, orient FROM andi WHERE loc=?', (word,))
+	q = 'SELECT rus_ex, andi_ex, marker, loc, orient FROM ' + lang + ' WHERE loc=?'
+	c.execute(q, (word,))
 	for i in c.fetchall():
 		constr = ''
 		for j in i:
@@ -55,7 +56,39 @@ def poisk(word):
 		# print(constr)
 	return arr
 
-# print(poisk('SUB'))
+
+def poisk_all(word, orient, lang):
+	conn = sqlite3.connect('dag_locatives.db')
+	c = conn.cursor()
+	arr = []
+	q = 'SELECT rus_ex, andi_ex, marker, loc, orient FROM ' + lang + ' WHERE orient="' + orient + '" and' + ' loc="' + word + '"'
+	print(q)
+	c.execute(q)
+	for i in c.fetchall():
+		constr = ''
+		for j in i:
+			constr += j + ' : '
+		arr.append(constr)
+		# print(constr)
+	return arr
+
+
+def poisk_orient(orient, lang):
+	conn = sqlite3.connect('dag_locatives.db')
+	c = conn.cursor()
+	arr = []
+	q = 'SELECT rus_ex, andi_ex, marker, loc, orient FROM ' + lang + ' WHERE orient=?'
+	c.execute(q, (orient,))
+	for i in c.fetchall():
+		constr = ''
+		for j in i:
+			constr += j + ' : '
+		arr.append(constr)
+		# print(constr)
+	return arr
+
+# print(poisk_loc('SUB', 'andi'))
+# print(poisk_all('SUB', 'ESS', 'andi'))
 
 # @app.route('/')
 # def form():
@@ -73,9 +106,17 @@ def poisk(word):
 @app.route('/')
 def form():
 	if request.args:
-		construct = poisk(request.args['word'])
-		search_line = request.args['word']
-		return render_template('results.html', array = construct, word = search_line)
+		loc = request.args['word']
+		orient = request.args['orient']
+		# postp = request.args['postposition']
+		lang = request.args['lang']
+		if orient == '':
+			result = poisk_loc(loc, lang)
+		elif loc == '':
+			result = poisk_orient(orient, lang)
+		else:
+			result = poisk_all(loc, orient, lang)
+		return render_template('results.html', array = result, word = loc)
 	else:
 		return render_template('landing-page.html')
         
